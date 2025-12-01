@@ -1,0 +1,349 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+  font-family: "Orbitron", sans-serif;
+}
+
+.grid-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 38vh;
+  height: 80vh;
+  background: linear-gradient(#26728a20 2px, transparent 5px) repeat-y,
+    linear-gradient(90deg, #00eaff20 2px, transparent 2px) repeat-x;
+  background-size: 100% 40px, 40px 100%;
+  transform-origin: top center;
+  transform: perspective(900px) rotateX(65deg);
+  animation: moveGrid 2.5s linear infinite;
+  z-index: 1;
+}
+
+@keyframes moveGrid {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 0 40px, 40px 0;
+  }
+}
+
+.top-header {
+  position: relative;
+  z-index: 5;
+  padding-top: 10px;
+}
+
+.top-header h1 {
+  font-size: clamp(24px, 5vw, 48px);
+  color: #00eaff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaffaa;
+  text-align: center;
+  margin: 0;
+  user-select: none;
+}
+
+.nav-links {
+  position: absolute;
+  top: 4px;
+  right: 30px;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links h3 {
+  margin: 0;
+  font-size: clamp(10px, 1.3vw, 16px);
+  color: #00eaff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 8px #00eaff, 0 0 16px #00eaffaa;
+  user-select: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.nav-links h3:hover {
+  color: #2e76a7;
+  text-shadow: 0 0 10px #2f8fdf, 0 0 20px #27a0d8aa;
+}
+
+.mini-squares {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.sq {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #4fd8ff;
+  opacity: 0.9;
+  box-shadow: 0 0 6px #4fd8ff, 0 0 12px #00aaff,
+    10px 0 25px rgba(0, 150, 255, 0.6), 20px 0 45px rgba(0, 150, 255, 0.4),
+    30px 0 80px rgba(0, 150, 255, 0.25);
+  animation: driftSquares linear infinite;
+}
+
+.sq:nth-child(1) {
+  top: 6vh;
+  animation-duration: 12s;
+  animation-delay: -2s;
+}
+.sq:nth-child(2) {
+  top: 14vh;
+  animation-duration: 15s;
+  animation-delay: -4s;
+}
+.sq:nth-child(3) {
+  top: 24vh;
+  animation-duration: 10s;
+  animation-delay: -6s;
+}
+.sq:nth-child(4) {
+  top: 34vh;
+  animation-duration: 16s;
+  animation-delay: -3s;
+}
+.sq:nth-child(5) {
+  top: 46vh;
+  animation-duration: 13s;
+  animation-delay: -1s;
+}
+.sq:nth-child(6) {
+  top: 58vh;
+  animation-duration: 16s;
+  animation-delay: -8s;
+}
+.sq:nth-child(7) {
+  top: 66vh;
+  animation-duration: 11s;
+  animation-delay: -5s;
+}
+.sq:nth-child(8) {
+  top: 72vh;
+  animation-duration: 14s;
+  animation-delay: -7s;
+}
+.sq:nth-child(9) {
+  top: 80vh;
+  animation-duration: 18s;
+  animation-delay: -9s;
+}
+.sq:nth-child(10) {
+  top: 86vh;
+  animation-duration: 12s;
+  animation-delay: -2s;
+}
+.sq:nth-child(11) {
+  top: 92vh;
+  animation-duration: 20s;
+  animation-delay: -10s;
+}
+.sq:nth-child(12) {
+  top: 50vh;
+  animation-duration: 9s;
+  animation-delay: -3s;
+}
+
+@keyframes driftSquares {
+  0% {
+    transform: translateX(-10vw) translateY(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(110vw) translateY(-5vh) scale(1);
+    opacity: 0;
+  }
+}
+
+.cube-wrapper {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.cube {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: spin 10s infinite linear;
+}
+
+.face {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: rgba(0, 150, 255, 0.25);
+  border: 2px solid #00caff;
+  box-shadow: 0 0 20px #00d0ff, 0 0 40px #009cff, 0 0 60px #0077ff;
+}
+
+.front {
+  transform: translateZ(60px);
+}
+.back {
+  transform: rotateY(180deg) translateZ(60px);
+}
+.right {
+  transform: rotateY(90deg) translateZ(60px);
+}
+.left {
+  transform: rotateY(-90deg) translateZ(60px);
+}
+.top {
+  transform: rotateX(90deg) translateZ(60px);
+}
+.bottom {
+  transform: rotateX(-90deg) translateZ(60px);
+}
+
+@keyframes spin {
+  from {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+.cube1 {
+  animation: drift1 18s infinite ease-in-out;
+}
+.cube2 {
+  animation: drift2 16s infinite ease-in-out;
+}
+.cube3 {
+  animation: drift3 20s infinite ease-in-out;
+}
+.cube4 {
+  animation: drift4 17s infinite ease-in-out;
+}
+
+.cube2 .cube {
+  transform: scale(0.8);
+}
+.cube3 .cube {
+  transform: scale(0.65);
+}
+.cube4 .cube {
+  transform: scale(0.65);
+}
+
+@keyframes drift1 {
+  0% {
+    transform: translate(20vw, 62vh);
+  }
+  25% {
+    transform: translate(30vw, 55vh);
+  }
+  50% {
+    transform: translate(40vw, 68vh);
+  }
+  75% {
+    transform: translate(25vw, 70vh);
+  }
+  100% {
+    transform: translate(20vw, 62vh);
+  }
+}
+
+@keyframes drift2 {
+  0% {
+    transform: translate(70vw, 60vh);
+  }
+  25% {
+    transform: translate(80vw, 55vh);
+  }
+  50% {
+    transform: translate(75vw, 68vh);
+  }
+  75% {
+    transform: translate(65vw, 72vh);
+  }
+  100% {
+    transform: translate(70vw, 60vh);
+  }
+}
+
+@keyframes drift3 {
+  0% {
+    transform: translate(45vw, 72vh);
+  }
+  25% {
+    transform: translate(55vw, 68vh);
+  }
+  50% {
+    transform: translate(60vw, 75vh);
+  }
+  75% {
+    transform: translate(50vw, 78vh);
+  }
+  100% {
+    transform: translate(45vw, 72vh);
+  }
+}
+
+@keyframes drift4 {
+  0% {
+    transform: translate(82vw, 52vh);
+  }
+  25% {
+    transform: translate(88vw, 56vh);
+  }
+  50% {
+    transform: translate(84vw, 64vh);
+  }
+  75% {
+    transform: translate(78vw, 60vh);
+  }
+  100% {
+    transform: translate(82vw, 52vh);
+  }
+}
+
+@media (max-width: 700px) {
+  .grid-bg {
+    top: 45vh;
+    transform: perspective(700px) rotateX(65deg);
+  }
+
+  .nav-links {
+    right: 15px;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .grid-bg {
+    top: 30vh;
+    transform: perspective(500px) rotateX(65deg);
+  }
+
+  .nav-links {
+    right: 10px;
+    gap: 0.5rem;
+  }
+
+  .cube-wrapper {
+    width: 100vw;
+  }
+
+  .cube {
+    width: 50vw;
+    height: 50vw;
+  }
+}
