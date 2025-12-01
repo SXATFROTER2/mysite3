@@ -22,6 +22,7 @@
   text-align: center;
   margin: 0;
   user-select: none;
+  font-family: orbitron, sans-serif;
 }
 
 .nav-links {
@@ -42,6 +43,7 @@
   user-select: none;
   white-space: nowrap;
   cursor: pointer;
+  font-family: Orbitron, sans-serif;
 }
 
 .nav-links h3:hover {
