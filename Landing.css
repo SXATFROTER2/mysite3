@@ -1,0 +1,475 @@
+@keyframes moveGrid {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 0 40px, 40px 0;
+  }
+}
+
+.top-header {
+  position: relative;
+  z-index: 5;
+  padding-top: 20px;
+}
+
+.top-header h1 {
+  font-size: clamp(22px, 6vw, 50px);
+  color: #00eaff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaffaa;
+  text-align: center;
+  margin: 0;
+  user-select: none;
+}
+
+.nav-links {
+  position: absolute;
+  top: 10px;
+  right: 40px;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links h3 {
+  margin: 0;
+  font-size: clamp(14px, 2vw, 20px);
+  color: #00eaff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaffaa;
+  user-select: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.nav-links h3:hover {
+  color: #2e76a7;
+  text-shadow: 0 0 10px #2f8fdf, 0 0 20px #27a0d8aa;
+  animation-name: grow;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  transition: ease-in-out;
+}
+
+.mini-squares {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.sq {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #4fd8ff;
+  opacity: 0.9;
+  box-shadow: 0 0 6px #4fd8ff, 0 0 12px #00aaff,
+    10px 0 25px rgba(0, 150, 255, 0.6), 20px 0 45px rgba(0, 150, 255, 0.4),
+    30px 0 80px rgba(0, 150, 255, 0.25);
+  animation: driftSquares linear infinite;
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.shape:nth-child(1) {
+  top: 5vh;
+  left: -10vw;
+  animation-duration: 14s;
+  animation-delay: -3s;
+  width: 30px;
+  height: 30px;
+}
+.shape:nth-child(2) {
+  top: 20vh;
+  left: -20vw;
+  animation-duration: 20s;
+  animation-delay: -8s;
+}
+.shape:nth-child(3) {
+  top: 35vh;
+  left: -15vw;
+  animation-duration: 16s;
+  animation-delay: -5s;
+  width: 50px;
+  height: 50px;
+}
+.shape:nth-child(4) {
+  top: 50vh;
+  left: -30vw;
+  animation-duration: 22s;
+  animation-delay: -11s;
+}
+.shape:nth-child(5) {
+  top: 65vh;
+  left: -25vw;
+  animation-duration: 18s;
+  animation-delay: -6s;
+}
+.shape:nth-child(6) {
+  top: 80vh;
+  left: -18vw;
+  animation-duration: 24s;
+  animation-delay: -13s;
+  width: 35px;
+  height: 35px;
+}
+.shape:nth-child(7) {
+  top: 10vh;
+  left: -40vw;
+  animation-duration: 26s;
+  animation-delay: -4s;
+}
+.shape:nth-child(8) {
+  top: 45vh;
+  left: -35vw;
+  animation-duration: 21s;
+  animation-delay: -9s;
+  width: 55px;
+  height: 55px;
+}
+.shape:nth-child(9) {
+  top: 72vh;
+  left: -12vw;
+  animation-duration: 19s;
+  animation-delay: -7s;
+}
+.shape:nth-child(10) {
+  top: 90vh;
+  left: -28vw;
+  animation-duration: 23s;
+  animation-delay: -12s;
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(140vw, -40vh, 0) rotate(540deg);
+    opacity: 0;
+  }
+}
+
+.cube-wrapper {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  z-index: 10;
+  animation: drift 18s infinite ease-in-out;
+}
+
+.cube {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: spin 10s infinite linear;
+}
+
+.face {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: rgba(0, 150, 255, 0.25);
+  border: 2px solid #00caff;
+  box-shadow: 0 0 20px #00d0ff, 0 0 40px #009cff, 0 0 60px #0077ff;
+}
+
+.front {
+  transform: translateZ(60px);
+}
+.back {
+  transform: rotateY(180deg) translateZ(60px);
+}
+.right {
+  transform: rotateY(90deg) translateZ(60px);
+}
+.left {
+  transform: rotateY(-90deg) translateZ(60px);
+}
+.top {
+  transform: rotateX(90deg) translateZ(60px);
+}
+.bottom {
+  transform: rotateX(-90deg) translateZ(60px);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate(20vw, 20vh);
+  }
+  25% {
+    transform: translate(70vw, 30vh);
+  }
+  50% {
+    transform: translate(60vw, 70vh);
+  }
+  75% {
+    transform: translate(25vw, 60vh);
+  }
+  100% {
+    transform: translate(20vw, 20vh);
+  }
+}
+
+.cube1 {
+  animation-name: drift1;
+  animation-duration: 18s;
+}
+.cube1 .cube {
+  animation-duration: 11s;
+}
+
+.cube2 {
+  animation-name: drift2;
+  animation-duration: 14s;
+}
+.cube2 .cube {
+  transform: scale(0.8);
+  animation-duration: 8s;
+}
+
+.cube3 {
+  animation-name: drift3;
+  animation-duration: 20s;
+}
+.cube3 .cube {
+  transform: scale(0.6);
+  animation-duration: 6s;
+}
+
+.cube3 {
+  animation-name: drift2;
+  animation-duration: 20s;
+}
+
+.cube4 {
+  animation-name: drift4;
+  animation-duration: 16s;
+}
+.cube4 .cube {
+  transform: scale(0.6);
+  animation-duration: 5s;
+}
+
+@keyframes drift1 {
+  0% {
+    transform: translate(20vw, 30vh);
+  }
+  25% {
+    transform: translate(65vw, 20vh);
+  }
+  50% {
+    transform: translate(70vw, 70vh);
+  }
+  75% {
+    transform: translate(25vw, 60vh);
+  }
+  100% {
+    transform: translate(20vw, 30vh);
+  }
+}
+
+@keyframes drift2 {
+  0% {
+    transform: translate(10vw, 60vh);
+  }
+  25% {
+    transform: translate(30vw, 20vh);
+  }
+  50% {
+    transform: translate(80vw, 40vh);
+  }
+  75% {
+    transform: translate(50vw, 80vh);
+  }
+  100% {
+    transform: translate(10vw, 60vh);
+  }
+}
+
+@keyframes drift3 {
+  0% {
+    transform: translate(60vw, 10vh);
+  }
+  25% {
+    transform: translate(80vw, 60vh);
+  }
+  50% {
+    transform: translate(40vw, 75vh);
+  }
+  75% {
+    transform: translate(15vw, 30vh);
+  }
+  100% {
+    transform: translate(60vw, 10vh);
+  }
+}
+
+@keyframes drift4 {
+  0% {
+    transform: translate(60vw, 10vh);
+  }
+  25% {
+    transform: translate(80vw, 60vh);
+  }
+  50% {
+    transform: translate(40vw, 75vh);
+  }
+  75% {
+    transform: translate(15vw, 30vh);
+  }
+  100% {
+    transform: translate(60vw, 10vh);
+  }
+}
+
+.mini-squares {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.sq {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #4fd8ff;
+  opacity: 0.9;
+  box-shadow: 0 0 6px #4fd8ff, 0 0 12px #00aaff,
+    10px 0 25px rgba(0, 150, 255, 0.6), 20px 0 45px rgba(0, 150, 255, 0.4),
+    30px 0 80px rgba(0, 150, 255, 0.25);
+  animation: driftSquares linear infinite;
+}
+
+.sq:nth-child(1) {
+  top: 5vh;
+  animation-duration: 12s;
+  animation-delay: -2s;
+}
+.sq:nth-child(2) {
+  top: 15vh;
+  animation-duration: 15s;
+  animation-delay: -4s;
+}
+.sq:nth-child(3) {
+  top: 22vh;
+  animation-duration: 10s;
+  animation-delay: -6s;
+}
+.sq:nth-child(4) {
+  top: 35vh;
+  animation-duration: 17s;
+  animation-delay: -3s;
+}
+.sq:nth-child(5) {
+  top: 42vh;
+  animation-duration: 13s;
+  animation-delay: -1s;
+}
+.sq:nth-child(6) {
+  top: 55vh;
+  animation-duration: 16s;
+  animation-delay: -8s;
+}
+.sq:nth-child(7) {
+  top: 63vh;
+  animation-duration: 11s;
+  animation-delay: -5s;
+}
+.sq:nth-child(8) {
+  top: 70vh;
+  animation-duration: 14s;
+  animation-delay: -7s;
+}
+.sq:nth-child(9) {
+  top: 78vh;
+  animation-duration: 18s;
+  animation-delay: -9s;
+}
+.sq:nth-child(10) {
+  top: 85vh;
+  animation-duration: 12s;
+  animation-delay: -2s;
+}
+.sq:nth-child(11) {
+  top: 92vh;
+  animation-duration: 20s;
+  animation-delay: -10s;
+}
+.sq:nth-child(12) {
+  top: 45vh;
+  animation-duration: 9s;
+  animation-delay: -3s;
+}
+
+@keyframes driftSquares {
+  0% {
+    transform: translateX(-10vw) translateY(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(110vw) translateY(-5vh) scale(1);
+    opacity: 0;
+  }
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: rgb(0, 0, 0);
+  overflow: hidden;
+}
+
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(#30a6ca20 2px, transparent 5px) repeat-y,
+    linear-gradient(90deg, #00eaff20 2px, transparent 2px) repeat-x;
+  background-size: 100% 40px, 40px 100%;
+  transform: perspective(500px) rotateX(65deg);
+  animation: moveGrid 2.5s linear infinite;
+  z-index: 1;
+}
+
+@keyframes moveGrid {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 0 40px, 40px 0;
+  }
+}
